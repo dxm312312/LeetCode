@@ -22,11 +22,15 @@ public class reverseKGroup25 {
         reverseKGroup(node1,4);
     }
 
+    //给你一个链表，每k个节点一组进行翻转，请你返回翻转后的链表。
+    //k是一个正整数，它的值小于或等于链表的长度。
+    //如果节点总数不是k的整数倍，那么请将最后剩余的节点保持原有顺序
+    //1->2->3->4->5  当 k = 2 时，应当返回: 2->1->4->3->5
     public static ListNode reverseKGroup(ListNode head, int k) {
 
         ListNode tempNode = getNode(head,k);
         if(tempNode == null) return head;
-        ListNode newHead = tempNode;
+        ListNode newHead = tempNode;//反转之后的头节点
         ListNode last = null;//前一个k中最后一个node,需要调整next的节点
         while(tempNode != null){
             if(last != null){
@@ -37,8 +41,8 @@ public class reverseKGroup25 {
                 last = head;
             }
 
-            ListNode pre = tempNode.next;
-            tempNode = tempNode.next;
+            ListNode pre = tempNode.next;//节点反转之后next指向的节点
+            tempNode = tempNode.next;//判断当前k个节点反转的边界
 
             while(head!= null && head != tempNode){
 
